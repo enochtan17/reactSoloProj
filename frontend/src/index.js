@@ -25,7 +25,7 @@ function Root() {
         <App />
       </BrowserRouter>
     </ReduxProvider>
-  );
+  )
 }
 
 ReactDOM.render(
@@ -33,4 +33,4 @@ ReactDOM.render(
     <Root />
   </React.StrictMode>,
   document.getElementById('root')
-);
+)
