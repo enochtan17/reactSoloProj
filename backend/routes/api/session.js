@@ -46,8 +46,10 @@ router.post(
         err.status = 401
         err.title = 'Login failed'
         err.errors = ['The provided credentials were invalid.']
+        // console.log('error', err)
         return next(err)
         }
+
 
         await setTokenCookie(res, user)
 
