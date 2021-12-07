@@ -19,8 +19,8 @@ Live website hosted by Heroku: https://react-project-etan.herokuapp.com/login
 
 ## Installation
 
-1. In the root directory, run npm install to install dependencies for both the front and backend.
-2. Run npm start in both frontend and backend folders.
+1. In the root directory, run `npm install` to install dependencies for both the front and backend.
+2. Run `npm start` in both frontend and backend folders.
 3. Navigate to localhost:3000 in your local browser.
 
 ## Future Features
