@@ -29,13 +29,17 @@ const EventList = () => {
     return (
         <>
             <h2>Events Index</h2>
-            {events.map(event => (
-                <h3 key={event.id}>{event.name}</h3>
-                // <p key={event.location}>{event.location}</p>
-                // <li key={event.id}>{event.details}</li>
-                // <li key={event.id}>{event.date}</li>
-                // <li key={event.id}>{event.time}</li>
-            ))}
+            <ul className='events-container'>
+                {events.map(event => (
+                    <li key={event.id}>
+                        <h3 key={event.name}>{event.name}</h3>
+                        <p key={event.location}>{event.location}</p>
+                        <div key={event.details}>{event.details}</div>
+                        <div key={event.date}>{event.date}</div>
+                        <div key={event.time}>{event.time}</div>
+                    </li>
+                ))}
+            </ul>
         </>
     )
 }

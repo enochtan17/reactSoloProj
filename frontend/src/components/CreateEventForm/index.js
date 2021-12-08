@@ -40,3 +40,5 @@ const CreateEventForm = () => {
         </section>
     )
 }
+
+export default CreateEventForm
