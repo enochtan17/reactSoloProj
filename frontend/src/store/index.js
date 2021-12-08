@@ -4,6 +4,7 @@ import thunk from "redux-thunk";
 import sessionReducer from "./session"
 import eventReducer from "./event";
 
+// 9. import reducer above and add to rootReducer below. -> new component
 const rootReducer = combineReducers({
   // add reducer functions here
   session: sessionReducer,
