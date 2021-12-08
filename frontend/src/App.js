@@ -5,6 +5,7 @@ import LoginFormPage from './components/Login'
 import SignupFormPage from './components/Signup'
 import * as sessionActions from './store/session'
 import Navigation from './components/Navigation'
+import EventList from './components/EventList'
 
 function App() {
   const dispatch = useDispatch()
@@ -18,7 +19,7 @@ function App() {
     <>
       <Navigation isLoaded={ isLoaded } />
       {isLoaded && (
-      <Switch>
+        <Switch>
         <Route path="/login">
           <LoginFormPage />
         </Route>
@@ -27,6 +28,7 @@ function App() {
         </Route>
       </Switch>
       )}
+      <EventList />
     </>
   )
 }
