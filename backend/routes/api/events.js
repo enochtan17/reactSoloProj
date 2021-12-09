@@ -43,9 +43,13 @@ const validateEvent = [
 ]
 
 // post event route
-router.post('/', requireAuth, validateEvent, asyncHandler(async(req, res) => {
-    const { name, location, details, date, time } = req.body
+router.post('/new', requireAuth, validateEvent, asyncHandler(async(req, res) => {
+    console.log('userId', req.user.dataValues)
+    console.log('req body', req.body)
+    // const { hostId } = req.user.dataValues.id
+    const { hostId, name, location, details, date, time } = req.body
     const event = await Event.create({
+        hostId,
         name,
         location,
         details,
@@ -53,7 +57,7 @@ router.post('/', requireAuth, validateEvent, asyncHandler(async(req, res) => {
         time
     })
 
-    return res.status(201).json(event)
+    return res.json({ event })
 }))
 
 // edit event route

@@ -10,7 +10,7 @@ const EventList = () => {
     const sessionUser = useSelector(state => state.session.user)
     // 11. state is passed in w/ dispatch above. accessed by useSelector below.
     // use console.log to see objKeys. events = array of all events.
-    const events = useSelector(state => {
+    let events = useSelector(state => {
         // console.log('state', state)
         return state.event.list
     })
@@ -18,8 +18,10 @@ const EventList = () => {
     // console.log('events', events)
 
     // 12. useEffect to dispatch the matching function from store to get needed data
-    useEffect(() => {
-        dispatch(getEvents())
+    useEffect(async() => {
+        const newEvents = await getEvents()
+        dispatch(newEvents)
+        events = newEvents.list
     }, [dispatch])
 
     // if no sessionUser = not logged in
