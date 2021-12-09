@@ -63,9 +63,10 @@ router.post('/new', requireAuth, validateEvent, asyncHandler(async(req, res) => 
 // edit event route
 router.put('/:eventId(\\d+)', requireAuth, validateEvent, asyncHandler(async(req, res) => {
     const { eventId } = req.params
-    const event = await Event.findByPk(eventId)
+    const eventToUpdate = await Event.findByPk(eventId)
 
     const {
+        hostId,
         name,
         location,
         details,
@@ -73,25 +74,29 @@ router.put('/:eventId(\\d+)', requireAuth, validateEvent, asyncHandler(async(req
         time
     } = req.body
 
-    await event.update({
+    const updatedEvent = {
+        hostId,
         name,
         location,
         details,
         date,
         time
-    })
+    }
 
-    return res.json(event)
+    await eventToUpdate.update(updatedEvent)
+
+    return res.json({ eventToUpdate })
 }))
 
 // delete event route
-router.delete('/:eventId(\\d+)', requireAuth, asyncHandler(async(req, res) => {
-    const { eventId } = req.params
+router.delete('/delete', requireAuth, asyncHandler(async(req, res) => {
+    console.log('inside delete backend route')
+    const { eventId } = req.body
     const event = await Event.findByPk(eventId)
 
     await event.destroy()
 
-    return res.json({ id: eventId })
+    return res.json({ msg: 'DELETED' })
 }))
 
 module.exports = router

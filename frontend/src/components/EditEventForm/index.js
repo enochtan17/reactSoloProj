@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
 import { createEvent } from '../../store/event'
-import './CreateEventForm.css'
+// import './EditEventForm.css'
 
 const CreateEventForm = () => {
     const dispatch = useDispatch()

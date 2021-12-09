@@ -15,12 +15,10 @@ const addEvent = event => ({
     event
 })
 
-const deleteEvent = eventId => {
-    return {
-        type: DELETE_ONE,
-        eventId
-    }
-}
+const removeEvent = eventId => ({
+    type: DELETE_ONE,
+    eventId
+})
 
 // 4. function w/ async dispatch, fetches json from backend route
 export const getEvents = () => async dispatch => {
@@ -34,23 +32,7 @@ export const getEvents = () => async dispatch => {
     }
 }
 
-// export const createEvent = data => {
-//     csrfFetch('/api/events/new')
-//         .then((data) => {
-//             return {
-//                 type: ADD_ONE,
-//                 data
-//             }
-//         })
-//         .catch((error) => {
-//             return {
-//                 type: 'ADD_ONE_FAIL',
-//                 errorMsg: error.message
-//             }
-//         })
-// }
-
-export const createEvent = data => async () => {
+export const createEvent = data => async dispatch => {
     // console.log('data', data)
     const res = await csrfFetch('/api/events/new', {
         method: 'POST',
@@ -61,18 +43,30 @@ export const createEvent = data => async () => {
     })
     console.log('res', res)
     try {
-        // const event = await res.json()
+        const event = await res.json()
         // console.log('event', event)
-        // dispatch(addEvent(event))
-        return {
-            type: ADD_ONE,
-            event: res
-        }
+        dispatch(addEvent(event.event))
+        // return {
+        //     type: ADD_ONE,
+        //     event: res
+        // }
     } catch (e) {
         return {
             type: 'ADD_ONE_FAIL',
             errorMsg: e.message
         }
+    }
+}
+
+export const deleteEvent = eventId => async dispatch => {
+    const res = await csrfFetch(`/api/events/delete`, {
+        method: "DELETE",
+        body: JSON.stringify({ eventId })
+    })
+    const data = await res.json()
+
+    if (data.msg === 'DELETED') {
+        dispatch(removeEvent(eventId))
     }
 }
 
@@ -82,7 +76,6 @@ export const createEvent = data => async () => {
 
 const initialState = {
     list: [],
-    event: [],
     errorMsg: ''
 }
 
@@ -100,13 +93,29 @@ const eventReducer = (state = initialState, action) => {
         case ADD_ONE:
             return {
                 ...state,
-                event: [...state.event, action.data]
+                // above returns the previous state, below sets the list key of
+                // said previous state to old state.list, with added action.event
+                // action = addEvent, .event keys in to event key set inside
+                list: [...state.list, action.event]
             }
         case 'ADD_ONE_FAIL':
             return {
                 ...state,
                 errorMsg: action.errorMsg
             }
+        case DELETE_ONE:
+            const updatedList = state.list
+            for (let i = 0; i < state.list.length; i++) {
+                if (state.list[i].id === action.eventId) {
+                    updatedList.splice(i, 1)
+                    break
+                }
+            }
+            const newState = {
+                ...state,
+                list: [...updatedList]
+            }
+            return newState
         default:
             return state
     }
