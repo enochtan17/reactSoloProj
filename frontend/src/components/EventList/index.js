@@ -19,7 +19,7 @@ const EventList = () => {
     // 12. useEffect to dispatch the matching function from store to get needed data
     useEffect(() => {
         dispatch(getEvents())
-    }, [dispatch])
+    }, [dispatch]) // adding events causes infinite loop
 
     // if no sessionUser = not logged in
     if (!sessionUser) return null
