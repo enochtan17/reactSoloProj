@@ -50,7 +50,7 @@ export const getEvents = () => async dispatch => {
 //         })
 // }
 
-export const createEvent = data => async dispatch => {
+export const createEvent = data => async () => {
     // console.log('data', data)
     const res = await csrfFetch('/api/events/new', {
         method: 'POST',
@@ -61,12 +61,12 @@ export const createEvent = data => async dispatch => {
     })
     console.log('res', res)
     try {
-        const event = await res.json()
-        console.log('event', event)
-        dispatch(addEvent(event))
+        // const event = await res.json()
+        // console.log('event', event)
+        // dispatch(addEvent(event))
         return {
             type: ADD_ONE,
-            event: data
+            event: res
         }
     } catch (e) {
         return {
@@ -75,6 +75,10 @@ export const createEvent = data => async dispatch => {
         }
     }
 }
+
+// export const editEvent = data => async() => {
+//     const res = await csrfFetch('/api/events/:eventId(\\d+)',)
+// }
 
 const initialState = {
     list: [],
