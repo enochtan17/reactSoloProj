@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { readAttendees } from '../../store/rsvp'
+import { addRSVP, removeRSVP } from '../../store/rsvp'
 import './RSVPForm.css'
 
 const RSVPForm = ({ eventId, setShowRSVPForm }) => {
@@ -20,6 +21,7 @@ const RSVPForm = ({ eventId, setShowRSVPForm }) => {
 
     // sessionUser.username = username of user
     const username = sessionUser.username
+    const userId = sessionUser.id
 
     useEffect(() => {
         dispatch(readAttendees(eventId))
@@ -39,8 +41,18 @@ const RSVPForm = ({ eventId, setShowRSVPForm }) => {
                 // listIdx = i
             }
         }
-        console.log('defaultRsvp', defaultRsvp)
+        // console.log('defaultRsvp', defaultRsvp)
         return defaultRsvp
+    }
+
+    const toggleRSVP = () => {
+        // add rsvp
+        if (!determineRSVP()) {
+            dispatch(addRSVP(userId, eventId, username))
+        } else {
+            // else remove rsvp
+            dispatch(removeRSVP(userId, eventId, username))
+        }
     }
 
     return (
@@ -55,6 +67,8 @@ const RSVPForm = ({ eventId, setShowRSVPForm }) => {
                 <button
                     onClick={(e) => {
                         e.preventDefault()
+                        toggleRSVP()
+                        // setShowRSVPForm(false)
                     }}
                 >
                     Un-RSVP
@@ -62,6 +76,8 @@ const RSVPForm = ({ eventId, setShowRSVPForm }) => {
                 <button
                     onClick={(e) => {
                         e.preventDefault()
+                        toggleRSVP()
+                        // setShowRSVPForm(false)
                     }}
                 >
                     RSVP
