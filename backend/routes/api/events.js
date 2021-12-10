@@ -61,30 +61,20 @@ router.post('/new', requireAuth, validateEvent, asyncHandler(async(req, res) => 
 }))
 
 // edit event route
-router.put('/:eventId(\\d+)', requireAuth, validateEvent, asyncHandler(async(req, res) => {
-    const { eventId } = req.params
-    const eventToUpdate = await Event.findByPk(eventId)
+router.put('/:id', requireAuth, validateEvent, asyncHandler(async(req, res) => {
+    const { id } = req.params
+    const eventToUpdate = await Event.findByPk(id)
 
     const {
-        hostId,
-        name,
-        location,
-        details,
-        date,
-        time
+        details
     } = req.body
 
     const updatedEvent = {
-        hostId,
-        name,
-        location,
-        details,
-        date,
-        time
+        details
     }
-
+    // console.log('updatedEvent', updatedEvent)
     await eventToUpdate.update(updatedEvent)
-
+    // console.log('eventToUpdate', eventToUpdate)
     return res.json({ eventToUpdate })
 }))
 

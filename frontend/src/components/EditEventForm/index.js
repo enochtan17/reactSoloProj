@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
-import { createEvent } from '../../store/event'
+import { editEvent } from '../../store/event'
 // import './EditEventForm.css'
 
-const CreateEventForm = () => {
+const EditEventForm = ({ eventId, setShowEditForm, setEditFormId }) => {
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user)
     const history = useHistory()
@@ -19,60 +19,32 @@ const CreateEventForm = () => {
     const events = useSelector(state => {
         return state.event
     })
-    const errorMessage = useSelector(state => state.errors)
-    // console.log('events in form', events)
-    // console.log('sessionUser', sessionUser)
 
-    // useEffect(() => {
-    //     dispatch(createEvent())
-    // }, [dispatch])
+    const event = useSelector(state => {
+        const eventArray = state.event.list
+        for (let i = 0; i < eventArray.length; i++) {
+            if (eventArray[i].id === eventId) {
+                return eventArray[i]
+            }
+        }
+    })
 
-    if (!sessionUser) return null
-    // hostId = sessionUser.id
-
-    const reset = () => {
-        setName('')
-        setLocation('')
-        setDetails('')
-        setDate('')
-        setTime('')
-    }
-
-    const addEvent = (e) => {
+    const handleSubmit = async e => {
         e.preventDefault()
 
-        const hostId = sessionUser.id
-        const data = {
-            hostId,
-            name,
-            location,
-            details,
-            date,
-            time
+        const updatedEvent = {
+            ...event,
+            details: details
         }
-
-        dispatch(createEvent(data))
-        reset()
+        dispatch(editEvent(updatedEvent))
+        setShowEditForm(false)
+        setEditFormId(null)
     }
 
-    // const handleSubmit = async e => {
-    //     e.preventDefault()
-    //     // console.log('inside handleSubmit')
-
-    //     const event = await dispatch(createEvent(data))
-
-
-    //     reset()
-    //     // if (event) {
-    //     //     history.push(`/events`)
-    //     //     // history.push(`/events/${event.id}`)
-    //     // }
-    // }
-
     return (
-        <section className='new-form'>
-            <form>
-                <input
+        <section className='editor-form'>
+            <form onSubmit={ handleSubmit }>
+                {/* <input
                     type='name'
                     placeholder='Event Name'
                     required
@@ -83,14 +55,14 @@ const CreateEventForm = () => {
                     placeholder='Event Location'
                     required
                     value={ location }
-                    onChange={(e) => setLocation(e.target.value)} />
+                    onChange={(e) => setLocation(e.target.value)} /> */}
                 <input
-                    type='details'
-                    placeholder='Event Details'
+                    type='text'
+                    placeholder='New Details'
                     required
                     value={ details }
                     onChange={(e) => setDetails(e.target.value)} />
-                <input
+                {/* <input
                     type='date'
                     placeholder='Event Date'
                     required
@@ -101,12 +73,12 @@ const CreateEventForm = () => {
                     placeholder='Event Time'
                     required
                     value={ time }
-                    onChange={(e) => setTime(e.target.value)} />
-                <button className='form-submit' onClick={ addEvent }>Create new Event</button>
-                <button className='hide-form'>Close</button>
+                    onChange={(e) => setTime(e.target.value)} /> */}
+                <button className='form-edit-save'>Save</button>
+                {/* <button className='hide-form'>Close</button> */}
             </form>
         </section>
     )
 }
 
-export default CreateEventForm
+export default EditEventForm

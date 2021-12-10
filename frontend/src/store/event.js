@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf"
 
 const LOAD = 'events/LOAD'
 const ADD_ONE = 'events/ADD_ONE'
+const EDIT_EVENT = 'events/EDIT_EVENT'
 const DELETE_ONE = 'events/DELETE_ONE'
 
 // 3. defined action of loading events.
@@ -12,6 +13,11 @@ const load = list => ({
 
 const addEvent = event => ({
     type: ADD_ONE,
+    event
+})
+
+const updateEvent = event => ({
+    type: EDIT_EVENT,
     event
 })
 
@@ -44,7 +50,6 @@ export const createEvent = data => async dispatch => {
     console.log('res', res)
     try {
         const event = await res.json()
-        // console.log('event', event)
         dispatch(addEvent(event.event))
         // return {
         //     type: ADD_ONE,
@@ -70,9 +75,21 @@ export const deleteEvent = eventId => async dispatch => {
     }
 }
 
-// export const editEvent = data => async() => {
-//     const res = await csrfFetch('/api/events/:eventId(\\d+)',)
-// }
+export const editEvent = data => async dispatch => {
+    const res = await csrfFetch(`/api/events/${data.id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    console.log('res', res)
+    if (res.ok) {
+        const event = await res.json()
+        console.log(event)
+        dispatch(updateEvent(event))
+    }
+}
 
 const initialState = {
     list: [],
@@ -102,6 +119,14 @@ const eventReducer = (state = initialState, action) => {
             return {
                 ...state,
                 errorMsg: action.errorMsg
+            }
+        case EDIT_EVENT:
+            const eventList = state.list
+            for (let i = 0; i < eventList.length; i++) {
+                if (eventList[i].id === action.event.eventToUpdate.id) {
+                    eventList.splice(i, 1, action.event.eventToUpdate)
+                    break
+                }
             }
         case DELETE_ONE:
             const updatedList = state.list

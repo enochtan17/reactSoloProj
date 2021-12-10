@@ -7,6 +7,7 @@ import * as sessionActions from './store/session'
 import Navigation from './components/Navigation'
 import EventList from './components/EventList'
 import CreateEventForm from './components/CreateEventForm'
+import EditEventForm from './components/CreateEventForm'
 
 function App() {
   const dispatch = useDispatch()
@@ -31,6 +32,9 @@ function App() {
       )}
       <CreateEventForm />
       <EventList />
+      <Route path='/events/:eventId'>
+        <EditEventForm />
+      </Route>
     </>
   )
 }
