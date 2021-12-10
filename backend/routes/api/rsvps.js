@@ -17,7 +17,7 @@ router.get('/', asyncHandler(async function(_req, res) {
 }))
 
 // get attendees by eventId
-router.get('/:eventId(\\d+)', asyncHandler(async function(req, res) {
+router.get('/:eventId', asyncHandler(async function(req, res) {
     const { eventId } = req.params
     const eventRSVPS = await RSVP.findAll({
         where: {
@@ -35,7 +35,6 @@ router.get('/:eventId(\\d+)', asyncHandler(async function(req, res) {
         const username = user.dataValues.username
         namesArray.push(username)
     }
-
     return res.json(namesArray)
 }))
 

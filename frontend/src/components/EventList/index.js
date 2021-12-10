@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { NavLink, Route, useParams } from 'react-router-dom'
 
 import EditEventForm from '../EditEventForm'
+import RSVPForm from '../RSVPForm'
 import { deleteEvent, getEvents } from '../../store/event'
 
 // 10. import packages, hooks, and the matching function from the store
@@ -17,6 +18,7 @@ const EventList = () => {
 
     const [showEditForm, setShowEditForm] = useState(false)
     const [editFormId, setEditFormId] = useState(null)
+    const [showRSVPForm, setShowRSVPForm] = useState(false)
     // console.log('events', events)
 
     // 12. useEffect to dispatch the matching function from store to get needed data
@@ -49,26 +51,41 @@ const EventList = () => {
                                         setEditFormId(event.id)
                                         }
                                     }
-                                    >
-                                        Edit
-                                    </button> }
+                            >
+                                Edit
+                            </button> }
                         { (sessionUser.id === event.hostId) &&
                             <button key={`deleteEdit-${event.id}`}
                                     onClick={() => dispatch(deleteEvent(event.id))}
                                     className={ event.id }
-                                    >
-                                        Cancel Event
-                                    </button> }
+                            >
+                                Cancel Event
+                            </button> }
                         { (sessionUser.id !== event.hostId) &&
-                            <button key={`eventRSVP-${event.id}`}>RSVP</button> }
+                            <button key={`eventRSVP-${event.id}`}
+                                    onClick={(e) => {
+                                        e.preventDefault()
+                                        setShowRSVPForm(!showRSVPForm)
+                                        setEditFormId(event.id)
+                                        }
+                                    }
+                            >
+                                Show RSVPs
+                            </button> }
                     </div>
                 ))}
             </ul>
             { showEditForm &&
                 <EditEventForm
+                eventId={editFormId}
+                setShowEditForm={setShowEditForm}
+                setEditFormId={setEditFormId}
+                />
+            }
+            { showRSVPForm &&
+                <RSVPForm
                     eventId={editFormId}
-                    setShowEditForm={setShowEditForm}
-                    setEditFormId={setEditFormId}
+                    setShowRSVPForm={setShowRSVPForm}
                 />
             }
         </>
