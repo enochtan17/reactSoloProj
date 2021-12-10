@@ -36,6 +36,9 @@ const validateEvent = [
     check('date')
         .exists({ checkFalsy: true })
         .withMessage('Please provide a valid date'),
+    check('date')
+        .isAfter()
+        .withMessage('Date / time cannot be in the past'),
     check('time')
         .exists({ checkFalsy: true })
         .withMessage('Please provide a valid time'),

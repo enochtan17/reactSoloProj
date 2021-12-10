@@ -14,6 +14,7 @@ const CreateEventForm = () => {
     const [details, setDetails] = useState('')
     const [date, setDate] = useState('')
     const [time, setTime] = useState('')
+    const [errors, setErrors] = useState([])
 
     const events = useSelector(state => {
         return state.event
@@ -50,8 +51,13 @@ const CreateEventForm = () => {
             time
         }
 
-        dispatch(createEvent(data))
-        reset()
+        return dispatch(createEvent(data)).then(() => reset())
+            .catch(
+                async(res) => {
+                    const data = await res.json()
+                    if (data && data.errors) setErrors(data.errors)
+                }
+            )
     }
 
     // const handleSubmit = async e => {
@@ -70,6 +76,9 @@ const CreateEventForm = () => {
 
     return (
         <section className='new-form'>
+            <ul>
+                {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+            </ul>
             <form>
                 <input
                     type='name'
