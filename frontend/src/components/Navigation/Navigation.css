@@ -1,0 +1,14 @@
+body {
+    font-family: 'Segoe UI', 'Roboto', 'Noto Sans', 'Ubuntu', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    font-size: 14px;
+}
+
+.list {
+    list-style-type: none;
+}
+
+.login-link, .signup-link {
+    padding-left: 25px;
+}
+
+

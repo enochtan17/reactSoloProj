@@ -1,9 +1,8 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-
 import { editEvent } from '../../store/event'
-// import './EditEventForm.css'
+import './EditEventForm.css'
 
 const EditEventForm = ({ eventId, setShowEditForm, setEditFormId }) => {
     const dispatch = useDispatch()

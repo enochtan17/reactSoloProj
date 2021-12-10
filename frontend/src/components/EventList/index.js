@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { NavLink, Route, useParams } from 'react-router-dom'
-
 import EditEventForm from '../EditEventForm'
 import RSVPForm from '../RSVPForm'
 import { deleteEvent, getEvents } from '../../store/event'
+import './EventList.css'
 
 // 10. import packages, hooks, and the matching function from the store
 const EventList = () => {
@@ -36,7 +35,7 @@ const EventList = () => {
             <ul className='events-container'>
                 {events.map(event => (
                     <div key={`eventDiv-${event.id}`} className='individual-events'>
-                        <li key={event.id}>
+                        <li className='list' key={event.id}>
                             <h3 key={event.name}>{event.name}</h3>
                             <p key={event.location}>{event.location}</p>
                             <div key={event.details}>{event.details}</div>
