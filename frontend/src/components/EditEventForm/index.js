@@ -7,6 +7,9 @@ import './EditEventForm.css'
 const EditEventForm = ({ eventId, setShowEditForm, setEditFormId }) => {
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user)
+    const events = useSelector(state => {
+        return state.event
+    })
     const history = useHistory()
     const [hostId, setHostId] = useState(0)
     const [name, setName] = useState('')
@@ -16,9 +19,6 @@ const EditEventForm = ({ eventId, setShowEditForm, setEditFormId }) => {
     const [time, setTime] = useState('')
     const [errors, setErrors] = useState([])
 
-    const events = useSelector(state => {
-        return state.event
-    })
 
     const event = useSelector(state => {
         const eventArray = state.event.list
@@ -34,6 +34,7 @@ const EditEventForm = ({ eventId, setShowEditForm, setEditFormId }) => {
 
         const updatedEvent = {
             ...event,
+            name: name,
             details: details
         }
         return dispatch(editEvent(updatedEvent)).then(() => setShowEditForm(false)).then(() => setEditFormId(null))
@@ -51,13 +52,13 @@ const EditEventForm = ({ eventId, setShowEditForm, setEditFormId }) => {
                 {errors && errors.map((error, idx) => <li key={idx}>{error}</li>)}
             </ul>
             <form onSubmit={ handleSubmit }>
-                {/* <input
+                <input
                     type='name'
                     placeholder='Event Name'
                     required
                     value={ name }
                     onChange={(e) => setName(e.target.value)} />
-                <input
+                {/* <input
                     type='location'
                     placeholder='Event Location'
                     required
