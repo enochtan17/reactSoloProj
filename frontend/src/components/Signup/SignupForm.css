@@ -1,22 +1,7 @@
-.homenav {
-    position: fixed;
-    top: 0;
-    margin: auto;
-    background-color: rgb(133, 133, 133);
-    width: 100%;
-    height: 80px;
-}
-
-label {
-    font-family: fantasy;
-    font-size: 20px;
-    font-weight: bolder;
-}
-
-input {
+.signup-input {
     margin: 0px 15px;
     width: 100%;
-    /* padding: 5px; */
+    border-radius: 6px;
 }
 
 .form-container {
@@ -37,14 +22,15 @@ input {
 }
 
 .input-container {
-    /* background-color: honeydew; */
     margin: 10px 25px;
     padding: 25px;
 }
 
-/* .signup-form-label { */
-    /* width: 100%; */
-/* } */
+.signup-form-label {
+    font-family: fantasy;
+    font-size: 20px;
+    font-weight: bolder;
+}
 
 .errHead {
     color: honeydew;
