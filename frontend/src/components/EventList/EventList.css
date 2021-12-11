@@ -1,0 +1,71 @@
+.event-area {
+    position: absolute;
+    top: 130px;
+    left: 20px;
+    width: 50%;
+    background-color: gray;
+    border-radius: 15px;
+}
+
+.events-header {
+    padding-left: 55px;
+    margin: 10px 10px 0px 10px;
+    font-family: fantasy;
+    font-size: 24px;
+}
+
+.events-list {
+    height: 600px;
+    overflow-y: auto;
+    margin-top: 0px;
+    padding: 10px;
+    border-top: dotted 1px black;
+}
+
+.list {
+    list-style: none;
+}
+
+.individual-events {
+    border: 3px solid rgb(15, 46, 15);
+    border-radius: 3px;
+    margin-bottom: 3px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    /* background-color: ; */
+}
+
+.event-title {
+    margin: 10px;
+}
+
+.event-text {
+    font-family: fantasy;
+
+}
+
+.form-button {
+    font-family: fantasy;
+    font-size: 14px;
+    font-weight: bolder;
+    border-radius: 15px;
+}
+
+.new-form {
+    position: absolute;
+    top: 80px;
+    right: 0px;
+    width: 500px;
+    background-color: gray;
+}
+
+.create-event-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-button:hover {
+    color: honeydew;
+    background-color: rgb(56, 71, 56);
+    box-shadow: 10px 5px 5px honeydew;
+}

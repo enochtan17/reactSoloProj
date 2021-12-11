@@ -80,7 +80,7 @@ const CreateEventForm = () => {
             <ul>
                 {errors && errors.map((error, idx) => <li key={idx}>{error}</li>)}
             </ul>
-            <form>
+            <form className='create-event-form'>
                 <input
                     type='name'
                     placeholder='Event Name'

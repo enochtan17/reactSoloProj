@@ -30,50 +30,55 @@ const EventList = () => {
 
     // 13. render data in jsx below.
     return (
-        <>
-            <h2>Events Index</h2>
-            <ul className='events-container'>
-                {events.map(event => (
-                    <div key={`eventDiv-${event.id}`} className='individual-events'>
-                        <li className='list' key={event.id}>
-                            <h3 key={event.name}>{event.name}</h3>
-                            <p key={event.location}>{event.location}</p>
-                            <div key={event.details}>{event.details}</div>
-                            <div key={event.date}>{event.date}</div>
-                            <div key={event.time}>{event.time}</div>
-                        </li>
-                        { (sessionUser.id === event.hostId) &&
-                            <button key={`eventEdit-${event.id}`}
-                                    onClick={(e) => {
-                                        e.preventDefault()
-                                        setShowEditForm(!showEditForm)
-                                        setEditFormId(event.id)
+        <div className='event-area'>
+            <h2 className='events-header'>Events Around Middle Earth</h2>
+            <div className='events-container'>
+                <ul className='events-list'>
+                    {events.map(event => (
+                        <div key={`eventDiv-${event.id}`} className='individual-events'>
+                            <li className='list' key={event.id}>
+                                <h3 className='event-title' key={event.name}>{event.name}</h3>
+                                <p className='event-text' key={event.location}>{event.location}</p>
+                                <div className='event-text' key={event.details}>{event.details}</div>
+                                <div className='event-text' key={event.date}>{event.date}</div>
+                                <div className='event-text' key={event.time}>{event.time}</div>
+                            </li>
+                            { (sessionUser.id === event.hostId) &&
+                                <button key={`eventEdit-${event.id}`}
+                                        className='form-button'
+                                        onClick={(e) => {
+                                            e.preventDefault()
+                                            setShowEditForm(!showEditForm)
+                                            setEditFormId(event.id)
+                                            }
                                         }
-                                    }
-                            >
-                                Edit
-                            </button> }
-                        { (sessionUser.id === event.hostId) &&
-                            <button key={`deleteEdit-${event.id}`}
-                                    onClick={() => dispatch(deleteEvent(event.id))}
-                                    className={ event.id }
-                            >
-                                Cancel Event
-                            </button> }
-                        { (sessionUser.id !== event.hostId) &&
-                            <button key={`eventRSVP-${event.id}`}
-                                    onClick={(e) => {
-                                        e.preventDefault()
-                                        setShowRSVPForm(!showRSVPForm)
-                                        setEditFormId(event.id)
+                                >
+                                    Edit
+                                </button> }
+                            { (sessionUser.id === event.hostId) &&
+                                <button key={`deleteEdit-${event.id}`}
+                                        className='form-button'
+                                        onClick={() => dispatch(deleteEvent(event.id))}
+                                        // className={ event.id }
+                                >
+                                    Cancel Event
+                                </button> }
+                            { (sessionUser.id !== event.hostId) &&
+                                <button key={`eventRSVP-${event.id}`}
+                                        className='form-button'
+                                        onClick={(e) => {
+                                            e.preventDefault()
+                                            setShowRSVPForm(!showRSVPForm)
+                                            setEditFormId(event.id)
+                                            }
                                         }
-                                    }
-                            >
-                                Show RSVPs
-                            </button> }
-                    </div>
-                ))}
-            </ul>
+                                >
+                                    Show RSVPs
+                                </button> }
+                        </div>
+                    ))}
+                </ul>
+            </div>
             { showEditForm &&
                 <EditEventForm
                 eventId={editFormId}
@@ -87,7 +92,7 @@ const EventList = () => {
                     setShowRSVPForm={setShowRSVPForm}
                 />
             }
-        </>
+        </div>
     )
 }
 
