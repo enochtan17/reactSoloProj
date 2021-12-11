@@ -36,6 +36,7 @@ const CreateEventForm = () => {
         setDetails('')
         setDate('')
         setTime('')
+        setErrors('')
     }
 
     const addEvent = (e) => {
@@ -77,7 +78,7 @@ const CreateEventForm = () => {
     return (
         <section className='new-form'>
             <ul>
-                {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+                {errors && errors.map((error, idx) => <li key={idx}>{error}</li>)}
             </ul>
             <form>
                 <input

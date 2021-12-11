@@ -14,6 +14,7 @@ const EditEventForm = ({ eventId, setShowEditForm, setEditFormId }) => {
     const [details, setDetails] = useState('')
     const [date, setDate] = useState('')
     const [time, setTime] = useState('')
+    const [errors, setErrors] = useState([])
 
     const events = useSelector(state => {
         return state.event
@@ -35,13 +36,20 @@ const EditEventForm = ({ eventId, setShowEditForm, setEditFormId }) => {
             ...event,
             details: details
         }
-        dispatch(editEvent(updatedEvent))
-        setShowEditForm(false)
-        setEditFormId(null)
+        return dispatch(editEvent(updatedEvent)).then(() => setShowEditForm(false)).then(() => setEditFormId(null))
+            .catch(
+                async(res) => {
+                    const data = await res.json()
+                    if (data && data.errors) setErrors(data.errors)
+                }
+            )
     }
 
     return (
         <section className='editor-form'>
+            <ul>
+                {errors && errors.map((error, idx) => <li key={idx}>{error}</li>)}
+            </ul>
             <form onSubmit={ handleSubmit }>
                 {/* <input
                     type='name'

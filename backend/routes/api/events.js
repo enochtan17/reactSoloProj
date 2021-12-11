@@ -63,8 +63,24 @@ router.post('/new', requireAuth, validateEvent, asyncHandler(async(req, res) => 
     return res.json({ event })
 }))
 
+const validateEdit = [
+    // check('name')
+    //     .exists({ checkFalsy: true })
+    //     .withMessage('Please provide a valid event name'),
+    // check('location')
+    //     .exists({ checkFalsy: true })
+    //     .withMessage('Please provide a valid location'),
+    check('details')
+        .exists({ checkFalsy: true })
+        .withMessage('Please provide event details'),
+    check('details')
+        .isLength({min: 2})
+        .withMessage('Details not detailed enough'),
+    handleValidationErrors
+]
+
 // edit event route
-router.put('/:id', requireAuth, validateEvent, asyncHandler(async(req, res) => {
+router.put('/:id', requireAuth, validateEdit, asyncHandler(async(req, res) => {
     const { id } = req.params
     const eventToUpdate = await Event.findByPk(id)
 
