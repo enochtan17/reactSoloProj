@@ -56,7 +56,7 @@ const RSVPForm = ({ eventId, setShowRSVPForm }) => {
     }
 
     return (
-        <>
+        <div className='rsvp-area'>
             <h3>Attendees</h3>
             <ul className='attendeesList'>
                 {rsvpList.map(name => (
@@ -82,7 +82,7 @@ const RSVPForm = ({ eventId, setShowRSVPForm }) => {
                 >
                     RSVP
                 </button> }
-        </>
+        </div>
     )
 }
 

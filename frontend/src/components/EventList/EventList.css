@@ -3,7 +3,7 @@
     top: 130px;
     left: 20px;
     width: 50%;
-    background-color: gray;
+    background-color: rgb(126, 120, 94);
     border-radius: 15px;
 }
 
@@ -41,7 +41,8 @@
 
 .event-text {
     font-family: fantasy;
-
+    padding-left: 20px;
+    margin: 0px;
 }
 
 .form-button {
@@ -49,6 +50,7 @@
     font-size: 14px;
     font-weight: bolder;
     border-radius: 15px;
+    margin: 0px 5px;
 }
 
 .new-form {
@@ -62,6 +64,20 @@
 .create-event-form {
     display: flex;
     flex-direction: column;
+}
+
+.editor-form {
+    position: absolute;
+    right: 25px;
+    bottom: 50px;
+    background-color: grey;
+}
+
+.rsvp-area {
+    position: absolute;
+    right: 25px;
+    bottom: 250px;
+    background-color: grey;
 }
 
 .form-button:hover {
