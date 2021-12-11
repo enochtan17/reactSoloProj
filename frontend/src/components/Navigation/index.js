@@ -4,6 +4,9 @@ import { useSelector } from 'react-redux'
 import ProfileButton from './ProfileButton'
 import LoginFormModal from '../LoginFormModal'
 import './Navigation.css'
+import logo from '../../imgs/LOGO.png'
+import explore from '../../imgs/home.png'
+import signup from '../../imgs/signup.png'
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user)
@@ -16,10 +19,10 @@ function Navigation({ isLoaded }){
     )
   } else {
     sessionLinks = (
-      <>
+      <div className='navright'>
         <LoginFormModal />
-        <NavLink to="/signup" id='signup'>Sign Up</NavLink>
-      </>
+        <NavLink to="/signup" id='signup'><img className='signupimg' src={signup} /></NavLink>
+      </div>
     )
   }
 
@@ -27,7 +30,12 @@ function Navigation({ isLoaded }){
     <nav className='homenav'>
       <ul className='nav-ul'>
         <li className='each-nav-component list'>
-          <NavLink exact to="/" id='home-link'>Home</NavLink>
+          <div className='navleft'>
+            <NavLink exact to="/" id='home-link'><img className='explore' src={explore} /></NavLink>
+          </div>
+          <div className='entmoot'>
+            <img className='entmoot' src={logo} />
+          </div>
           {isLoaded && sessionLinks}
         </li>
       </ul>

@@ -1,13 +1,16 @@
 import React, { useState } from 'react'
 import { Modal } from '../../context/Modal'
 import LoginForm from './LoginForm'
+import login from '../../imgs/login.png'
 
 function LoginFormModal() {
   const [showModal, setShowModal] = useState(false)
 
   return (
     <>
-      <button onClick={() => setShowModal(true)}>Log In</button>
+      <button onClick={() => setShowModal(true)} className='login'>
+        <img className='loginimg' src={login} />
+      </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <LoginForm />
