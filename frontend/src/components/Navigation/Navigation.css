@@ -61,3 +61,10 @@ body {
 .signupimg, .loginimg {
     height: 25px;
 }
+
+.explore:hover, .loginimg:hover, .signupimg:hover {
+    /* opacity: 100%; */
+    background-color: rgb(255, 255, 255);
+    border-radius: 15%;
+    box-shadow: 10px 5px 5px rgb(126, 120, 94), -10px -5px 5px rgb(126, 120, 94);
+}
