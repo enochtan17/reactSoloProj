@@ -12,3 +12,6 @@ body {
 }
 
 
+#login, #signup, #home-link {
+    text-decoration: none;
+}
