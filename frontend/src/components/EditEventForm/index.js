@@ -47,11 +47,12 @@ const EditEventForm = ({ eventId, setShowEditForm, setEditFormId }) => {
     }
 
     return (
-        <section className='editor-form'>
+        <section className='editor-area'>
+            <h2 className='edit-header'>Edit Event</h2>
             <ul>
                 {errors && errors.map((error, idx) => <li key={idx}>{error}</li>)}
             </ul>
-            <form onSubmit={ handleSubmit }>
+            <form className='edit-form' onSubmit={ handleSubmit }>
                 <input
                     type='name'
                     placeholder='Event Name'

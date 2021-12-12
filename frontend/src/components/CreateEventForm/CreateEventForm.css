@@ -1,0 +1,53 @@
+.create-event-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.new-form {
+    position: absolute;
+    top: 105px;
+    right: 15px;
+    width: 500px;
+    background-color: rgb(126, 120, 94);
+    border-radius: 15px;
+}
+
+.create-header, .edit-header, .rsvp-header {
+    font-family: fantasy;
+    padding-left: 55px;
+    margin: 10px 10px 0px 10px;
+}
+
+.creater-text {
+    font-family: fantasy;
+}
+
+.form-submit, .form-edit-save {
+    font-family: fantasy;
+    font-size: 14px;
+    font-weight: bolder;
+    border-radius: 15px;
+    margin: 0px 5px;
+}
+
+.editor-area {
+    position: absolute;
+    right: 25px;
+    bottom: 50px;
+    width: 500px;
+    background-color: rgb(126, 120, 94);
+    border-radius: 15px;
+}
+
+.edit-form {
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.form-submit:hover, .form-edit-save:hover {
+    color: honeydew;
+    background-color: rgb(56, 71, 56);
+    box-shadow: 10px 5px 5px honeydew;
+}

@@ -57,7 +57,7 @@ const RSVPForm = ({ eventId, setShowRSVPForm }) => {
 
     return (
         <div className='rsvp-area'>
-            <h3>Attendees</h3>
+            <h2 className='rsvp-header'>Attendees</h2>
             <ul className='attendeesList'>
                 {rsvpList.map(name => (
                     <p key={ name }>{ name }</p>
@@ -70,6 +70,7 @@ const RSVPForm = ({ eventId, setShowRSVPForm }) => {
                         toggleRSVP()
                         // setShowRSVPForm(false)
                     }}
+                    className='rsvp-button'
                 >
                     Un-RSVP
                 </button> :
@@ -79,6 +80,7 @@ const RSVPForm = ({ eventId, setShowRSVPForm }) => {
                         toggleRSVP()
                         // setShowRSVPForm(false)
                     }}
+                    className='rsvp-button'
                 >
                     RSVP
                 </button> }

@@ -77,6 +77,7 @@ const CreateEventForm = () => {
 
     return (
         <section className='new-form'>
+            <h2 className='create-header creater-text'>Create Event</h2>
             <ul>
                 {errors && errors.map((error, idx) => <li key={idx}>{error}</li>)}
             </ul>
@@ -111,8 +112,8 @@ const CreateEventForm = () => {
                     required
                     value={ time }
                     onChange={(e) => setTime(e.target.value)} />
-                <button className='form-submit' onClick={ addEvent }>Create new Event</button>
-                <button className='hide-form'>Close</button>
+                <button className='form-submit creater-text' onClick={ addEvent }>Create New Event</button>
+                {/* <button className='hide-form creater-text'>Close</button> */}
             </form>
         </section>
     )

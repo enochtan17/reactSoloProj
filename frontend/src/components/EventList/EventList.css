@@ -53,33 +53,6 @@
     margin: 0px 5px;
 }
 
-.new-form {
-    position: absolute;
-    top: 80px;
-    right: 0px;
-    width: 500px;
-    background-color: gray;
-}
-
-.create-event-form {
-    display: flex;
-    flex-direction: column;
-}
-
-.editor-form {
-    position: absolute;
-    right: 25px;
-    bottom: 50px;
-    background-color: grey;
-}
-
-.rsvp-area {
-    position: absolute;
-    right: 25px;
-    bottom: 250px;
-    background-color: grey;
-}
-
 .form-button:hover {
     color: honeydew;
     background-color: rgb(56, 71, 56);
