@@ -62,9 +62,35 @@ body {
     height: 25px;
 }
 
-.explore:hover, .loginimg:hover, .signupimg:hover {
+.prof-button {
+    border-radius: 15px;
+    margin: 0px 5px;
+}
+
+.logout-button {
+    font-family: fantasy;
+    font-size: 14px;
+    font-weight: bolder;
+    border-radius: 15px;
+    margin: 0px 5px;
+}
+
+.prof-li {
+    font-family: fantasy;
+}
+
+.explore:hover,
+.loginimg:hover,
+.signupimg:hover,
+.logout-button:hover {
     /* opacity: 100%; */
-    background-color: rgb(255, 255, 255);
-    border-radius: 15%;
-    box-shadow: 10px 5px 5px rgb(126, 120, 94), -10px -5px 5px rgb(126, 120, 94);
+    color: honeydew;
+    background-color: rgb(56, 71, 56);
+    box-shadow: 10px 5px 5px honeydew;
+}
+
+.prof-button:hover {
+    color: honeydew;
+    background-color: rgb(56, 71, 56);
+    box-shadow: 5px 2px 5px honeydew;
 }
