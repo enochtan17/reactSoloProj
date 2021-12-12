@@ -78,35 +78,40 @@ const CreateEventForm = () => {
     return (
         <section className='new-form'>
             <h2 className='create-header creater-text'>Create Event</h2>
-            <ul>
-                {errors && errors.map((error, idx) => <li key={idx}>{error}</li>)}
+            <ul className='ul-errors'>
+                {errors && errors.map((error, idx) => <li className='error' key={idx}>{error}</li>)}
             </ul>
             <form className='create-event-form'>
                 <input
+                    className='create-form-input'
                     type='name'
                     placeholder='Event Name'
                     required
                     value={ name }
                     onChange={(e) => setName(e.target.value)} />
                 <input
+                    className='create-form-input'
                     type='location'
                     placeholder='Event Location'
                     required
                     value={ location }
                     onChange={(e) => setLocation(e.target.value)} />
                 <input
+                    className='create-form-input'
                     type='details'
                     placeholder='Event Details'
                     required
                     value={ details }
                     onChange={(e) => setDetails(e.target.value)} />
                 <input
+                    className='create-form-input'
                     type='date'
                     placeholder='Event Date'
                     required
                     value={ date }
                     onChange={(e) => setDate(e.target.value)} />
                 <input
+                    className='create-form-input'
                     type='time'
                     placeholder='Event Time'
                     required

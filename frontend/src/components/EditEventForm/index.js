@@ -49,11 +49,12 @@ const EditEventForm = ({ eventId, setShowEditForm, setEditFormId }) => {
     return (
         <section className='editor-area'>
             <h2 className='edit-header'>Edit Event</h2>
-            <ul>
-                {errors && errors.map((error, idx) => <li key={idx}>{error}</li>)}
+            <ul className='ul-errors'>
+                {errors && errors.map((error, idx) => <li className='error' key={idx}>{error}</li>)}
             </ul>
             <form className='edit-form' onSubmit={ handleSubmit }>
                 <input
+                    className='create-form-input'
                     type='name'
                     placeholder='Event Name'
                     required
@@ -66,6 +67,7 @@ const EditEventForm = ({ eventId, setShowEditForm, setEditFormId }) => {
                     value={ location }
                     onChange={(e) => setLocation(e.target.value)} /> */}
                 <input
+                    className='create-form-input'
                     type='text'
                     placeholder='New Details'
                     required

@@ -1,18 +1,20 @@
 .create-event-form {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
 .new-form {
     position: absolute;
     top: 105px;
-    right: 15px;
+    right: 20px;
     width: 500px;
     background-color: rgb(126, 120, 94);
     border-radius: 15px;
 }
 
-.create-header, .edit-header, .rsvp-header {
+.create-header, .edit-header {
     font-family: fantasy;
     padding-left: 55px;
     margin: 10px 10px 0px 10px;
@@ -20,6 +22,18 @@
 
 .creater-text {
     font-family: fantasy;
+}
+
+.create-form-input {
+    margin: 2px 15px;
+    width: 90%;
+    height: 20px;
+    border-radius: 6px;
+}
+
+.form-submit {
+    width: 30%;
+    /* padding: 25px; */
 }
 
 .form-submit, .form-edit-save {
@@ -37,6 +51,10 @@
     width: 500px;
     background-color: rgb(126, 120, 94);
     border-radius: 15px;
+}
+
+.ul-errors {
+    margin: 0px;
 }
 
 .edit-form {

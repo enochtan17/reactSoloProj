@@ -57,8 +57,8 @@ const RSVPForm = ({ eventId, setShowRSVPForm }) => {
 
     return (
         <div className='rsvp-area'>
-            <h2 className='rsvp-header'>Attendees</h2>
-            <ul className='attendeesList'>
+            <h3 className='rsvp-header'>Attendees</h3>
+            <ul className='attendees-list'>
                 {rsvpList.map(name => (
                     <p key={ name }>{ name }</p>
                 ))}

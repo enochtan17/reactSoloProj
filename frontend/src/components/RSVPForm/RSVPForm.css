@@ -1,10 +1,27 @@
 .rsvp-area {
     position: absolute;
-    right: 25px;
-    bottom: 250px;
+    right: 145px;
+    bottom: 200px;
     background-color: rgb(126, 120, 94);
     border-radius: 15px;
-    width: 500px;
+    width: 250px;
+    height: 225px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.attendees-list {
+    height: 100px;
+    overflow-y: auto;
+    border-top: dotted 1px black;
+    margin-top: 0px;
+}
+
+.rsvp-header {
+    font-family: fantasy;
+    padding-left: 15px;
+    margin: 10px 10px 0px 10px;
 }
 
 .rsvp-button {
@@ -12,7 +29,7 @@
     font-size: 14px;
     font-weight: bolder;
     border-radius: 15px;
-    margin: 0px 5px;
+    margin: auto;
 }
 
 .rsvp-button:hover {

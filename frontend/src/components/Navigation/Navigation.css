@@ -79,6 +79,10 @@ body {
     font-family: fantasy;
 }
 
+.profile-dropdown {
+    padding-right: 15px;
+}
+
 .explore:hover,
 .loginimg:hover,
 .signupimg:hover,
