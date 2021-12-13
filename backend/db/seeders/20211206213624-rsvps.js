@@ -74,7 +74,7 @@ module.exports = {
       userId: 10
     },
     {
-      eventId: 4,
+      eventId: 5,
       userId: 13
     },
    ], {});
