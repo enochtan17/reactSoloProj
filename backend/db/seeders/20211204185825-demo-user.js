@@ -45,6 +45,41 @@ module.exports = {
       username: 'Chief of the Mûmakil',
       hashedPassword: bcrypt.hashSync('password')
     },
+    {
+      email: 'aragorn@lotr.io',
+      username: 'Aragorn',
+      hashedPassword: bcrypt.hashSync('password')
+    },
+    {
+      email: 'elrond@lotr.io',
+      username: 'Elrond',
+      hashedPassword: bcrypt.hashSync('password')
+    },
+    {
+      email: 'legolas@lotr.io',
+      username: 'Legolas',
+      hashedPassword: bcrypt.hashSync('password')
+    },
+    {
+      email: 'gimli@lotr.io',
+      username: 'Gimli',
+      hashedPassword: bcrypt.hashSync('password')
+    },
+    {
+      email: 'witchking@lotr.io',
+      username: 'Witch-King of Angmar',
+      hashedPassword: bcrypt.hashSync('password')
+    },
+    {
+      email: 'orcs@lotr.io',
+      username: 'Orc Army',
+      hashedPassword: bcrypt.hashSync('password')
+    },
+    {
+      email: 'ents@lotr.io',
+      username: 'Ent Army',
+      hashedPassword: bcrypt.hashSync('password')
+    },
    ], {})
   },
 

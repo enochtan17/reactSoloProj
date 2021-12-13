@@ -85,7 +85,12 @@ body {
 
 .explore:hover,
 .loginimg:hover,
-.signupimg:hover,
+.signupimg:hover {
+    background-color: honeydew;
+    border-radius: 15px;
+    box-shadow: 10px 5px 5px rgb(56, 71, 56);
+}
+
 .logout-button:hover {
     /* opacity: 100%; */
     color: honeydew;

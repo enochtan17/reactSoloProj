@@ -37,6 +37,22 @@ module.exports = {
       date: 'March 15, 3019',
       time: '3:00pm'
     },
+    {
+      hostId: 8,
+      name: 'Council of Elrond',
+      location: 'Rivendell',
+      details: 'Strangers from distant lands, friends of old.  You have been summoned here to answer the threat of Mordor.',
+      date: 'October 25, 3018',
+      time: '11:00am'
+    },
+    {
+      hostId: 2,
+      name: 'Destruction of Isengard',
+      location: 'Isengard',
+      details: 'Last March of the Ents. Revenge on Sauruman.',
+      date: 'March 3, 3018',
+      time: '9:00pm'
+    },
    ], {});
   },
 

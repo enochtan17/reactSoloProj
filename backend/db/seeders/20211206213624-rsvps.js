@@ -14,6 +14,10 @@ module.exports = {
       */
    return queryInterface.bulkInsert('RSVPs', [
      {
+      eventId: 1,
+      userId: 2
+    },
+     {
        eventId: 1,
        userId: 5
      },
@@ -22,13 +26,57 @@ module.exports = {
       userId: 6
     },
     {
+      eventId: 2,
+      userId: 11
+    },
+    {
+      eventId: 2,
+      userId: 12
+    },
+    {
       eventId: 3,
       userId: 1
     },
     {
       eventId: 3,
       userId: 5
-    }
+    },
+    {
+      eventId: 3,
+      userId: 7
+    },
+    {
+      eventId: 3,
+      userId: 9
+    },
+    {
+      eventId: 3,
+      userId: 10
+    },
+    {
+      eventId: 4,
+      userId: 4
+    },
+    {
+      eventId: 4,
+      userId: 5
+    },
+    {
+      eventId: 4,
+      userId: 7
+    },
+    {
+      eventId: 4,
+      userId: 9
+    },
+    {
+      eventId: 4,
+      userId: 10
+    },
+    {
+      eventId: 4,
+      userId: 13
+    },
    ], {});
   },
 
